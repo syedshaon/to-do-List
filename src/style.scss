@@ -20,3 +20,11 @@ nav a.nav-link.active:focus {
 li.changeCompletion::marker {
   display: none;
 }
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+  z-index: 11111111111111111111111;
+}

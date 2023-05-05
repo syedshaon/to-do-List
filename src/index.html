@@ -9,30 +9,28 @@
   </head>
 
   <body class="bg-light">
-    <header class="p-3 bg-dark fixed-top">
+    <header class="p-3 bg-dark">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container-fluid">
-            <a class="navbar-brand link-warning" href="#"><i class="bi bi-alarm"></i> Task Tracker</a>
+            <a class="navbar-brand home link-warning" href="#"><i class="bi bi-alarm"></i> Task Tracker</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto text-center text-md-end mt-5 mt-md-0 mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link mx-2 active link-warning" aria-current="page" href="#">Home</a>
+                  <a class="home nav-link mx-2 active link-warning" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                   <a id="addTaskMenu" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link mx-2 link-warning" href="#">Add Task</a>
                 </li>
-                <li class="nav-item">
-                  <a id="addTaskMenu" data-bs-toggle="modal" data-bs-target="#categoryModal" class="nav-link mx-2 link-warning" href="#">Add Task Category</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle link-warning" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Task Categories </a>
+                  <ul id="nav-dropdown-menu" class="dropdown-menu bg-dark"></ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link mx-2 link-warning" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link mx-2 link-warning" href="#code">Source Code</a>
+                  <a id="addCategorykMenu" data-bs-toggle="modal" data-bs-target="#categoryModal" class="nav-link mx-2 link-warning" href="#">Add Task Category</a>
                 </li>
               </ul>
             </div>
@@ -51,12 +49,20 @@
           </div>
           <div class="modal-body">
             <div class="container mt-5 m-auto">
-              <form id="addTaskForm" class="row g-3 align-items-center">
+              <form id="addTaskForm" data-key="" data-category="" class="row g-3 align-items-center">
                 <div class="col-12">
                   <label class="visually-hidden" for="inlineFormInputGroupTitle">Task Title</label>
                   <div class="input-group">
                     <div class="input-group-text">Task Title</div>
                     <input required name="title" type="text" class="form-control" id="inlineFormInputGroupTitle" />
+                  </div>
+                </div>
+                <div class="col-12" id="selectCategoryWhileAdd">
+                  <label class="visually-hidden" for="inlineFormInputGroupCategory">Category</label>
+                  <div class="input-group">
+                    <div class="input-group-text">Category</div>
+
+                    <select id="addTaskCategories" name="Category" class="form-select" id="inlineFormInputGroupCategory" aria-label="Default select example"></select>
                   </div>
                 </div>
                 <div class="col-12">
@@ -136,24 +142,24 @@
             <div class="container mt-5 m-auto">
               <form id="addCategoryForm" class="row g-3 align-items-center">
                 <div class="col-12">
-                  <label class="visually-hidden" for="inlineFormInputGroupTitle">category Title</label>
+                  <label class="visually-hidden" for="CatName">category Title</label>
                   <div class="input-group">
                     <div class="input-group-text">category Title</div>
-                    <input required name="title" type="text" class="form-control" id="inlineFormInputGroupTitle" />
+                    <input required name="CatName" type="text" class="form-control" id="CatName" />
                   </div>
                 </div>
 
                 <div class="col-12">
-                  <label class="visually-hidden" for="inlineFormInputGroupDetails">Category Description</label>
+                  <label class="visually-hidden" for="catDetails">Category Description</label>
                   <div class="input-group">
                     <div class="input-group-text">Category Description</div>
 
-                    <textarea required name="categoryDetails" class="form-control" id="inlineFormInputGroupDetails" cols="30" rows="3"></textarea>
+                    <textarea required name="categoryDetails" class="form-control" id="catDetails" cols="30" rows="3"></textarea>
                   </div>
                 </div>
 
                 <div class="col-12">
-                  <button id="addTaskBtn" type="submit" class="d-block w-100 btn btn-warning">Submit</button>
+                  <button id="addCategoryBtn" type="submit" class="d-block w-100 btn btn-warning">Submit</button>
                 </div>
               </form>
             </div>
@@ -163,15 +169,16 @@
     </div>
     <!-- Add category modal ends -->
 
-    <section class="my-5 py-5 mt-lg-0">
+    <section class="my-5 mt-md-0">
       <div class="container mb-5">
-        <div class="justify-content-md-between justify-content-center align-items-stretch btn-outline-warning row gap-3 mt-5 pt-5" id="all-tasks"></div>
+        <div class="justify-content-md-evenly justify-content-center align-items-stretch btn-outline-warning row gap-3" id="all-tasks"></div>
       </div>
     </section>
 
     <footer class="bg-dark text-center p-5 text-warning fixed-bottom">
       <div class="container">Copyright 2023 - Today. Syed Mashiur Rahman</div>
     </footer>
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="bi bi-chevron-double-up"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
