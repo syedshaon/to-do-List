@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     index: "./src/index.js",
   },
-  devtool: "source-map",
+  // devtool: "source-map",
   devServer: {
     allowedHosts: [".preview.csb.app", "localhost"],
     // .preview.csb.app is the domain for CodeSandbox.io

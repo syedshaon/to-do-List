@@ -1,40 +1,22 @@
-@import "../node_modules/reset-css/sass/reset";
-@import "./scss/variables";
-
-/* Importing ends here */
-
 @font-face {
   font-family: RobotoRegular, Arial, Helvetica, sans-serif;
   src: "url(./fonts/Roboto-Regular.ttf)";
 }
 
-.alert {
-  border: 1px solid $border-dark;
-}
-
 body {
-  background-color: rgb(230, 213, 213);
-  color: rgb(209 209 209 / 26%);
   font-family: RobotoRegular, sans-serif;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 50vh;
-  border-color: rgb(240 248 255 / 42.3%);
-  border-style: solid;
-  font-size: 3rem;
-  font-weight: 700;
+nav a.nav-link.active,
+nav a.nav-link:hover,
+nav a.nav-link.active:focus {
+  border-bottom: 1px solid #ffc107;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+li.changeCompletion::marker {
+  display: none;
 }
