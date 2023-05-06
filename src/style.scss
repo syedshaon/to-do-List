@@ -28,3 +28,32 @@ li.changeCompletion::marker {
   display: none;
   z-index: 11111111111111111111111;
 }
+
+/* Related to tooltips shown on task card */
+.statusChange,
+.deleteIcon,
+.editIcon {
+  position: relative;
+  &:hover:after {
+    position: absolute;
+    left: -100px;
+    top: -33px;
+    color: #ffc107;
+    width: 220px !important;
+  }
+}
+.statusChange {
+  &:hover:after {
+    content: "Change Completion Status";
+  }
+}
+.deleteIcon {
+  &:hover:after {
+    content: "Edit Task";
+  }
+}
+.editIcon {
+  &:hover:after {
+    content: "Delete Task";
+  }
+}

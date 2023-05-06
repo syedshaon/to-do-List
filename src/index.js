@@ -4,14 +4,18 @@ import TaskCategory from "./scripts/task_category";
 import Task from "./scripts/declare_task";
 import loadTasksToDom from "./scripts/load_task_to_dom";
 
-/* Related to back to top button */
+/* ////////////////////////////////////////////////////////////////////////////
+////////////////////  Related to back to top button ////////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
 
 import { displayButton, scrollToTop } from "./scripts/backToTop";
 
 displayButton();
 scrollToTop();
 
-// New Task Category Instantiate
+/* ////////////////////////////////////////////////////////////////////////////
+////////////////////  New Task Category Instantiate ////////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
 
 let allCategories = {};
 
@@ -21,7 +25,9 @@ if (localStorage.getItem("allCategories")) {
   localStorage.setItem("allCategories", JSON.stringify(allCategories));
 }
 
-/* Add Category */
+/* ////////////////////////////////////////////////////////////////////////////
+///////////////////////////  Add Category Function ////////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
 function addCategoryToLocalStorage(title, description) {
   if (!allCategories[title]) {
     const newCategory = new TaskCategory(title, description);
@@ -35,6 +41,10 @@ function addCategoryToLocalStorage(title, description) {
     alert("Category exists");
   }
 }
+
+/* ////////////////////////////////////////////////////////////////////////////
+////////////////////////  Addding Category through Dom ////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
 
 document.getElementById("addCategoryBtn").addEventListener("click", (e) => {
   e.preventDefault();
@@ -66,7 +76,10 @@ addCategoryToLocalStorage("Default", "All tasks may go here. Or you can create a
   defaultTasks = JSON.parse(localStorage.getItem("defaultTasks"));
 } */
 
-/* Add Task */
+/* ////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////  Add Task //////////////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
+
 function addTasksToArray(category, title, description, dueDate, priority, notes, checkList) {
   const newTask = new Task(title, description, dueDate, priority, notes, checkList);
   allCategories[category].tasks.push(newTask);
@@ -76,7 +89,10 @@ function addTasksToArray(category, title, description, dueDate, priority, notes,
 }
 
 // addTasksToArray("Default", "Finish project 3", "Complete the final report and submit it", "2023-06-30", "High", "Don't forget to include the updated charts", true);
-/* Update Task */
+
+/* ////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////  Update Task//////////////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
 function updateTask(category, id, title, description, dueDate, priority, notes, checkList) {
   const newTask = new Task(title, description, dueDate, priority, notes, checkList);
   // The following will not work if there task category is changed
@@ -90,7 +106,10 @@ function updateTask(category, id, title, description, dueDate, priority, notes, 
 
 // updateTask("Default", 0, "Finish project 3", "Complete the final report and submit it", "2023-06-30", "High", "Don't forget to include the updated charts", false);
 
-/* Delete Task */
+/* ////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////  Delete Task ////////////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
+
 function deleteOneTask(category, id) {
   if (window.confirm("Are you sure about deleting the task?")) {
     allCategories[category].tasks.splice(id, 1);
@@ -102,7 +121,9 @@ function deleteOneTask(category, id) {
 
 // deleteOneTask("Default", 0);
 
-/* Change Completion Status */
+/* ////////////////////////////////////////////////////////////////////////////
+/////////////////////////  Change Completion Status ///////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
 
 function changeCompletionStatus(category, id) {
   if (window.confirm("Are you sure about changing completion status?")) {
@@ -131,7 +152,10 @@ setTimeout(() => {
 // changeCompletionStatus(0);
 // changeCompletionStatus("Default", 0);
 
-/* Show all tasks to DOM */
+/* ////////////////////////////////////////////////////////////////////////////
+/////////////////////////  Show all tasks to DOM ///////////////////////////
+//////////////////////////////////////////////////////////////////////////// */
+
 function loadCategorySpecificTaskToDom(category = "Default") {
   document.getElementById("all-tasks").innerHTML = "";
   loadTasksToDom(allCategories[category]);
@@ -169,10 +193,8 @@ document.getElementById("nav-dropdown-menu").innerHTML = navCategories;
 document.getElementById("addTaskCategories").innerHTML = addModalDropDown;
 
 /* ////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////
+//////////////////// Add and Update a task from Dom ///////////////////////////
 //////////////////////////////////////////////////////////////////////////// */
-
-/* Add and Update a task from Dom */
 
 document.getElementById("addTaskBtn").addEventListener("click", (e) => {
   e.preventDefault();
@@ -202,7 +224,9 @@ document.getElementById("addTaskBtn").addEventListener("click", (e) => {
 
 // console.log(allCategories.Default.tasks[0].dueDate);
 
-/* Delete a task when delete button is clicked */
+/* ////////////////////////////////////////////////////////////////////////////
+///////////// Delete a task when delete button is clicked /////////////////////
+//////////////////////////////////////////////////////////////////////////// */
 
 document.querySelectorAll(".deleteTask").forEach((element) => {
   element.addEventListener("click", () => {
@@ -213,7 +237,9 @@ document.querySelectorAll(".deleteTask").forEach((element) => {
   });
 });
 
-/* Change text of form when Add Task button is clicked */
+/* ////////////////////////////////////////////////////////////////////////////
+////////// Change text of form when Add Task button is clicked ////////////////
+//////////////////////////////////////////////////////////////////////////// */
 
 document.getElementById("addTaskMenu").addEventListener("click", () => {
   document.getElementById("selectCategoryWhileAdd").style.display = "block";
@@ -236,9 +262,11 @@ document.getElementById("addTaskMenu").addEventListener("click", () => {
   form.status.value = "";
 });
 
-// Load Edit task button event listener
+/* ////////////////////////////////////////////////////////////////////////////
+//////////////////// Load Edit task button event listener /////////////////////
+///// Load task values to the form when edit task button is clicked ///////////
+//////////////////////////////////////////////////////////////////////////// */
 
-/* Load task values to the form when edit task button is clicked */
 function edtiTaskButtonEventListener() {
   document.querySelectorAll(".editTask").forEach((element) => {
     element.addEventListener("click", (e) => {
@@ -319,7 +347,3 @@ addTasksToArray("Design the Site", "Some quick example text to build on the card
 
 // Task update
 /* updateTask(0, "Finish project on time", "Some quick example text to build on the card title and make up the bulk of the card's content.", "2023-06-28", "Urgent", "It is required to get a new job", false); */
-
-// Show details of the task
-
-/* console.log(defaultTasks[0].details()); */
