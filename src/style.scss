@@ -49,11 +49,11 @@ li.changeCompletion::marker {
 }
 .deleteIcon {
   &:hover:after {
-    content: "Edit Task";
+    content: "Delete Task";
   }
 }
 .editIcon {
   &:hover:after {
-    content: "Delete Task";
+    content: "Edit Task";
   }
 }
